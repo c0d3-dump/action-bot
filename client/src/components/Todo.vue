@@ -22,7 +22,7 @@ const submitForm = () => {
   form.append("query", formData.value);
 
   axios
-    .post("http://localhost:5000/todo", form, {
+    .post("http://localhost:3000/api/todo", form, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
