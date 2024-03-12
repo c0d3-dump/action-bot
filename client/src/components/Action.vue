@@ -37,7 +37,7 @@ async function makePrediction() {
   actions.value = acts;
   for (const action of acts) {
     if (!action['CNT']) {
-      addChat(`Content is missing for '${action.TYPE}' action. please add here: `, "bot");
+      addChat(`Content is missing for '${getType(action.TYPE)}' action. please add here: `, "bot");
       isAiBot.value = false;
       text.value = "";
       return;
@@ -47,6 +47,19 @@ async function makePrediction() {
   addChat("All the actions have been performed successfully.", "bot");
   emit('doActions', actions.value);
   text.value = "";
+}
+
+function getType(todoType) {
+  switch (todoType) {
+    case "AT":
+      return "Add todo"
+    case "RT":
+      return "Remove todo"
+    case "CT":
+      return "MarkI todo"
+    default:
+      break;
+  }
 }
 
 function interactWithChat() {
@@ -141,7 +154,7 @@ function scrollToBottom() {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   height: 500px;
-  max-width: 300px;
+  width: 300px;
 }
 
 .floating-form textarea {

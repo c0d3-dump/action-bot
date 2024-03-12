@@ -7,7 +7,7 @@ function delTodo() {
   emit('deleteTodo', props.todo);
 }
 
-function mTodo(e) {
+function markTodo(e) {
   emit('markTodo', props.todo);
 }
 
@@ -15,7 +15,7 @@ function mTodo(e) {
 
 <template>
   <label>
-    <!-- <input type="checkbox" @change="mTodo" /> -->
+    <input type="checkbox" :checked="todo.done" @change="markTodo" />
   </label>
   <div class="todo-content">
     {{ todo.todo }}

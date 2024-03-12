@@ -72,6 +72,7 @@ section {
   box-shadow: var(--personal-glow);
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  margin-left: 8px;
 }
 
 .create-todo input[type="submit"]:hover {

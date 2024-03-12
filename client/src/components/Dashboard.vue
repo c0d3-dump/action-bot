@@ -3,7 +3,6 @@ import { ref, nextTick } from "vue";
 import AddBox from "./AddBox.vue";
 import Todo from "./Todo.vue";
 import Action from "./Action.vue";
-import axios from "axios";
 
 const todos = ref([]);
 
@@ -23,7 +22,7 @@ function deleteTodo(todo) {
 }
 
 function markTodo(tod) {
-  todos.value = todos.value.map((x) => ({ todo: x.todo, done: x == tod ? !x.done : x.done }));
+  todos.value = todos.value.map((x) => ({ todo: x.todo, done: x.todo === tod ? !x.done : x.done }));
 }
 
 function doActions(actions) {
@@ -37,6 +36,9 @@ function doActions(actions) {
           todo: action["CNT"],
           done: false
         });
+        break;
+      case "CT":
+        markTodo(action["CNT"],);
         break;
       default:
         break;
@@ -113,4 +115,4 @@ h2 {
   box-shadow: var(--shadow);
   margin-bottom: 1rem;
 }
-</style>./AddBox.vue
+</style>

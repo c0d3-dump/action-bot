@@ -11,7 +11,7 @@ args.overwrite_output_dir =True
 args.train_batch_size = 32
 args.eval_batch_size = 32
 
-model = NERModel('roberta', '../../outputs/checkpoint-126-epoch-2',labels=labels,args=args, use_cuda=False)
+model = NERModel('roberta', '../../outputs/checkpoint-189-epoch-3',labels=labels,args=args, use_cuda=False)
 def modifyPrompt(p = ""):
   p = p.replace("'", " ' ")
   p = p.replace("\"", " ' ")
@@ -43,7 +43,7 @@ def makePrediction(prompt):
       if (x != "O"):
         a = x.split("-")
         match a[1]:
-          case "AT" | "RT":
+          case "AT" | "RT" | "CT":
             if (a[0] == "B"):
                 dict = {}
                 dict["TYPE"] = a[1]
