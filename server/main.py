@@ -5,6 +5,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/", methods=['GET'])
+def health():
+  return "hello there!"
+
 @app.route("/api/todo", methods=['POST'])
 def todos():
     query = request.form['query']

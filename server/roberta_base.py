@@ -1,7 +1,7 @@
 from simpletransformers.ner import NERModel,NERArgs
 import pandas as pd
 
-df_t = pd.read_csv('../../data-generator/train.csv')
+df_t = pd.read_csv('../data/train.csv')
 
 labels = df_t["type"].unique().tolist()
 args = NERArgs()
@@ -11,7 +11,7 @@ args.overwrite_output_dir =True
 args.train_batch_size = 32
 args.eval_batch_size = 32
 
-model = NERModel('roberta', '../../outputs/checkpoint-189-epoch-3',labels=labels,args=args, use_cuda=False)
+model = NERModel('roberta', '../outputs/checkpoint-189-epoch-3',labels=labels,args=args, use_cuda=False)
 def modifyPrompt(p = ""):
   p = p.replace("'", " ' ")
   p = p.replace("\"", " ' ")
